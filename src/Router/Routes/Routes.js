@@ -5,6 +5,7 @@ import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import MyReview from "../../Pages/MyReview/MyReview";
 import Page404 from "../../Pages/Page404/Page404";
+import Service from "../../Pages/Service/Service";
 import SignUp from "../../Pages/SignUp/SignUp";
 
 const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/review",
         element: <MyReview></MyReview>,
+      },
+      {
+        path: "/service",
+        element: <Service></Service>,
       },
       {
         path: "/blog",
