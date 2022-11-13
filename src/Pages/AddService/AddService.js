@@ -6,7 +6,7 @@ const AddService = () => {
       <div className="hero bg-base-200 my-6">
         <div className="hero-content text-center">
           <div className="max-w-md">
-            <h1 className="text-5xl font-bold">Add Your Service</h1>
+            <h1 className="text-5xl font-bold">Add Your Travel Service</h1>
             <p className="py-6"> </p>
           </div>
         </div>
@@ -36,6 +36,18 @@ const AddService = () => {
                         placeholder="Enter your service price"
                         required
                         name="price"
+                      />
+                    </div>
+                  </div>
+                  <div className="md:flex items-center mt-8">
+                    <div className="w-full flex flex-col">
+                      <label className="font-semibold leading-none">Location</label>
+                      <input
+                        type="text"
+                        className="input input-bordered mt-4"
+                        placeholder="Enter location"
+                        required
+                        name="location"
                       />
                     </div>
                   </div>
