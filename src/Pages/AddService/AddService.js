@@ -31,7 +31,7 @@ const AddService = () => {
                     <div className="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4">
                       <label className="font-semibold leading-none">Price</label>
                       <input
-                        type="email"
+                        type="text"
                         className="input input-bordered mt-4"
                         placeholder="Enter your service price"
                         required
@@ -75,7 +75,7 @@ const AddService = () => {
                       ></textarea>
                     </div>
                   </div>
-                  <div className="flex items-center justify-center w-full">
+                  <div className="flex items-center  w-full">
                     <button className="mt-9 btn btn-primary">Add Service</button>
                   </div>
                 </form>
