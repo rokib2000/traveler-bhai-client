@@ -6,7 +6,7 @@ const MyReview = () => {
       <div className="hero bg-base-200 my-6">
         <div className="hero-content text-center">
           <div className="max-w-md">
-            <h1 className="text-5xl font-bold">My Review</h1>
+            <h1 className="text-5xl font-bold">My Reviews</h1>
             <p className="py-6"> </p>
           </div>
         </div>
