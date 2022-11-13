@@ -4,7 +4,7 @@ const AboutSection = () => {
   return (
     <div className="hero my-12 ">
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <img src="https://i.postimg.cc/150xwgvD/Woman-With-Suitcase.png" className="max-w-sm rounded-lg " />
+        <img src="https://i.postimg.cc/150xwgvD/Woman-With-Suitcase.png" className="max-w-sm rounded-lg " alt="" />
         <div>
           <h1 className="text-5xl font-bold">TRAVEL MORE TO DISCOVER YOURSELF!</h1>
           <p className="py-6">

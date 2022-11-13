@@ -1,12 +1,12 @@
 import React from "react";
 
-const Services = () => {
+const ServicesSection = () => {
   return (
     <div className="my-12">
       <div className="hero">
         <div className="hero-content text-center">
           <div className="max-w-md">
-            <h1 className="text-4xl font-bold">Services</h1>
+            <h1 className="text-4xl font-bold">ServicesSection</h1>
             <p className="py-6">Provident cupiditate voluptatem et in.</p>
           </div>
         </div>
@@ -46,4 +46,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default ServicesSection;
