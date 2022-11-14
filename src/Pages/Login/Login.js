@@ -1,11 +1,15 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 import ChangePageTitle from "../Shared/ChangePageTitle/ChangePageTitle";
 
 const Login = () => {
   const { signInWithGoogle, signInEmailPassword } = useContext(AuthContext);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
   const handleSignIn = (event) => {
     event.preventDefault();
@@ -16,9 +20,12 @@ const Login = () => {
     signInEmailPassword(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
-        toast.success("Login Successfully!");
-        form.reset();
+        // console.log(user);
+        if (user) {
+          toast.success("Login Successfully!");
+          navigate(from, { replace: true });
+          form.reset();
+        }
       })
       .catch((error) => {
         // const errorCode = error.code;
@@ -31,8 +38,12 @@ const Login = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        toast.success("Login Successfully!");
+        // console.log(user);
+
+        if (user) {
+          toast.success("Login Successfully!");
+          navigate(from, { replace: true });
+        }
       })
       .catch((error) => {
         console.error(error);
