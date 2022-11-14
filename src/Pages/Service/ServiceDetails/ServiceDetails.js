@@ -1,25 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
 const ServiceDetails = () => {
+  const service = useLoaderData();
+  // console.log(service);
+
+  const { description, image, location, price, title } = service;
+
   return (
     <div className="container mx-auto">
       <div className="md:w-1/2 rounded overflow-hidden shadow-lg mx-auto my-12">
-        <img className="w-full" src="https://placeimg.com/400/225/arch" alt="Sunset in the mountains" />
+        <img className="w-full" src={image} alt="Sunset in the mountains" />
         <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+          <div className="font-bold text-xl mb-2">{title}</div>
           <div className="flex justify-between my-4">
             <p className="text-gray-700 text-base">
-              <span className="font-semibold">Location:</span> Bangladesh
+              <span className="font-semibold">Location:</span> {location}
             </p>
             <p className="text-gray-700 text-base">
-              <span className="font-semibold">Price:</span> $999
+              <span className="font-semibold">Price:</span> ${price}
             </p>
           </div>
-          <p className="text-gray-700 text-base">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis
-            eaque, exercitationem praesentium nihil.
-          </p>
+          <p className="text-gray-700 text-base break-words">{description}</p>
         </div>
         <div className="px-6 pt-4 pb-2 flex justify-between items-center">
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
