@@ -18,11 +18,9 @@ const ServiceCard = ({ service }) => {
           <small>{description.slice(0, 100)}</small>
         </p>
       </div>
-      <div className="px-6 pt-4 pb-2 flex justify-between items-center">
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          20 Review
-        </span>
-        <Link to={`/service/${_id}`} className="btn btn-primary ">
+      <div className="px-6 pt-4 pb-2 flex justify-between items-end ">
+        {/* <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"></span> */}
+        <Link to={`/service/${_id}`} className=" btn btn-primary ">
           View Details
         </Link>
       </div>

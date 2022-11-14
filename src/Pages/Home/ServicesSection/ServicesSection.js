@@ -13,7 +13,8 @@ const ServicesSection = () => {
         const homeServices = data.slice(0, 3);
         // console.log(services);
         setServices(homeServices);
-      });
+      })
+      .catch((err) => console.error(err));
   }, []);
 
   return (

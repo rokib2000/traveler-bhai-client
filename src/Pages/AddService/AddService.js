@@ -30,7 +30,8 @@ const AddService = () => {
           toast.success("Service Added Successfully");
           form.reset();
         }
-      });
+      })
+      .catch((err) => console.error(err));
 
     // console.log(service);
   };

@@ -10,6 +10,7 @@ import Service from "../../Pages/Service/Service/Service";
 import ServiceDetails from "../../Pages/Service/ServiceDetails/ServiceDetails";
 import SignUp from "../../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import LoadingSpinner from "../../Pages/Shared/LoadingSpinner/LoadingSpinner";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: (
+          <LoadingSpinner>
+            <Home></Home>
+          </LoadingSpinner>
+        ),
       },
       {
         path: "/login",
@@ -38,12 +43,20 @@ const router = createBrowserRouter([
       },
       {
         path: "/services",
-        element: <Service></Service>,
+        element: (
+          <LoadingSpinner>
+            <Service></Service>
+          </LoadingSpinner>
+        ),
         loader: () => fetch("http://localhost:5000/services"),
       },
       {
         path: "/service/:id",
-        element: <ServiceDetails></ServiceDetails>,
+        element: (
+          <LoadingSpinner>
+            <ServiceDetails></ServiceDetails>
+          </LoadingSpinner>
+        ),
         loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`),
       },
       {

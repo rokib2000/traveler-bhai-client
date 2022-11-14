@@ -1,12 +1,25 @@
-import React from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import "react-photo-view/dist/react-photo-view.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import AddReview from "../../Shared/AddReview/AddReview";
+import ReviewShowCard from "../../Shared/ReviewShowCard/ReviewShowCard";
 
 const ServiceDetails = () => {
   const service = useLoaderData();
   const { _id, description, image, location, price, title } = service;
+
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/reviews?id=${_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setReviews(data);
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <div className="container mx-auto">
@@ -32,36 +45,16 @@ const ServiceDetails = () => {
         </div>
         <div className="px-6 pt-4 pb-2 flex justify-between items-center">
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            20 Review
+            {reviews.length} Review
           </span>
         </div>
       </div>
 
       <div className="md:w-1/2 mx-auto">
         <h2 className="text-4xl mb-8">Reviews</h2>
-        <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg">
-          <div className="relative flex gap-4">
-            <img
-              src="https://icons.iconarchive.com/icons/diversity-avatars/avatars/256/charlie-chaplin-icon.png"
-              className="relative rounded-full   bg-white border h-14 w-14"
-              alt=""
-              loading="lazy"
-            />
-            <div className="flex flex-col w-full">
-              <div className="flex flex-row justify-between">
-                <p className="relative text-lg whitespace-nowrap truncate overflow-hidden">Rokib</p>
-                <Link className="text-gray-500 text-xl">
-                  <i className="fa-solid fa-trash"></i>
-                </Link>
-              </div>
-              <p className="text-gray-400 text-sm">20 April 2022, at 14:88 PM</p>
-            </div>
-          </div>
-          <p className="-mt-4 text-gray-500">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />
-            Maxime quisquam vero adipisci beatae voluptas dolor ame.
-          </p>
-        </div>
+        {reviews.map((review) => (
+          <ReviewShowCard key={review._id} review={review}></ReviewShowCard>
+        ))}
       </div>
 
       <AddReview key={_id} service={service}></AddReview>
