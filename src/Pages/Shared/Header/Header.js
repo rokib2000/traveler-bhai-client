@@ -28,13 +28,17 @@ const Header = () => {
         <Link to="/services">Service</Link>
       </li>
 
-      <li>
-        <Link to="/addService">Add Service</Link>
-      </li>
+      {user?.uid && (
+        <>
+          <li>
+            <Link to="/addService">Add Service</Link>
+          </li>
 
-      <li>
-        <Link to="/myReview">My Reviews</Link>
-      </li>
+          <li>
+            <Link to="/myReview">My Reviews</Link>
+          </li>
+        </>
+      )}
 
       <li>
         <Link to="/blog">Blog</Link>

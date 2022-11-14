@@ -1,5 +1,6 @@
 import React from "react";
 import toast from "react-hot-toast";
+import ChangePageTitle from "../Shared/ChangePageTitle/ChangePageTitle";
 
 const AddService = () => {
   const handleServiceAdd = (event) => {
@@ -36,6 +37,7 @@ const AddService = () => {
 
   return (
     <div>
+      <ChangePageTitle pageTitle="Add Service - Traveler Bhai" />
       <div className="hero bg-base-200 my-6">
         <div className="hero-content text-center">
           <div className="max-w-md">

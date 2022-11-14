@@ -1,8 +1,10 @@
 import React from "react";
+import ChangePageTitle from "../Shared/ChangePageTitle/ChangePageTitle";
 
 const MyReview = () => {
   return (
     <div>
+      <ChangePageTitle pageTitle="My Review - Traveler Bhai" />
       <div className="hero bg-base-200 my-6">
         <div className="hero-content text-center">
           <div className="max-w-md">

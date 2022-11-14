@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
+import ChangePageTitle from "../Shared/ChangePageTitle/ChangePageTitle";
 
 const SignUp = () => {
   const { createUser, updateUser } = useContext(AuthContext);
@@ -42,67 +43,70 @@ const SignUp = () => {
   };
 
   return (
-    <div
-      className="min-h-screen"
-      style={{
-        backgroundImage: `url("https://i.postimg.cc/B6rNsh9j/logo-maiya.png") `,
-        backgroundRepeat: "no-repeat",
-        // backgroundSize: "40%",
-        // backgroundAttachment: "fixed",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="hero min-h-screen">
-        <div className="hero-content flex-col ">
-          <div className="text-center ">
-            <h1 className="text-5xl font-bold mt-[-0.5rem]">Sign Up now!</h1>
-          </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form onSubmit={handleSignUp} className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Name</span>
-                </label>
-                <input type="text" placeholder="name" name="name" className="input input-bordered" required />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Image</span>
-                </label>
-                <input type="text" placeholder="image url" name="image" className="input input-bordered" />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input type="email" placeholder="email" name="email" className="input input-bordered" required />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input
-                  type="password"
-                  placeholder="password"
-                  name="password"
-                  className="input input-bordered"
-                  required
-                />
-              </div>
-              <div className="form-control mt-6">
-                <button type="submit" className="btn btn-primary">
-                  Sign up
-                </button>
-              </div>
-            </form>
-            <p className="text-center mb-6">
-              Already have an account?{" "}
-              <Link className="text-cyan-500 font-semibold" to="/login">
-                Log in
-              </Link>{" "}
-            </p>
-            {/* <div className="divider">OR</div> */}
-            {/* <div className="card-body">
+    <>
+      <ChangePageTitle pageTitle="Sign Up - Traveler Bhai" />
+
+      <div
+        className="min-h-screen"
+        style={{
+          backgroundImage: `url("https://i.postimg.cc/B6rNsh9j/logo-maiya.png") `,
+          backgroundRepeat: "no-repeat",
+          // backgroundSize: "40%",
+          // backgroundAttachment: "fixed",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="hero min-h-screen">
+          <div className="hero-content flex-col ">
+            <div className="text-center ">
+              <h1 className="text-5xl font-bold mt-[-0.5rem]">Sign Up now!</h1>
+            </div>
+            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+              <form onSubmit={handleSignUp} className="card-body">
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Name</span>
+                  </label>
+                  <input type="text" placeholder="name" name="name" className="input input-bordered" required />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Image</span>
+                  </label>
+                  <input type="text" placeholder="image url" name="image" className="input input-bordered" />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Email</span>
+                  </label>
+                  <input type="email" placeholder="email" name="email" className="input input-bordered" required />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Password</span>
+                  </label>
+                  <input
+                    type="password"
+                    placeholder="password"
+                    name="password"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+                <div className="form-control mt-6">
+                  <button type="submit" className="btn btn-primary">
+                    Sign up
+                  </button>
+                </div>
+              </form>
+              <p className="text-center mb-6">
+                Already have an account?{" "}
+                <Link className="text-cyan-500 font-semibold" to="/login">
+                  Log in
+                </Link>{" "}
+              </p>
+              {/* <div className="divider">OR</div> */}
+              {/* <div className="card-body">
               <div className="form-control ">
                 <button type="button" className="btn btn-primary">
                   <svg
@@ -124,10 +128,11 @@ const SignUp = () => {
                 </button>
               </div>
             </div> */}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
