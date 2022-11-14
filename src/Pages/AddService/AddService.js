@@ -1,6 +1,39 @@
 import React from "react";
+import toast from "react-hot-toast";
+import { json } from "react-router-dom";
 
 const AddService = () => {
+  const handleServiceAdd = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const title = form.title.value;
+    const price = form.price.value;
+    const location = form.location.value;
+    const image = form.image.value;
+    const description = form.description.value;
+
+    const service = { price, title, location, image, description };
+
+    fetch("http://localhost:5000/services", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(service),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          toast.success("Service Added Successfully");
+          form.reset();
+        }
+      });
+
+    // console.log(service);
+  };
+
   return (
     <div>
       <div className="hero bg-base-200 my-6">
@@ -16,7 +49,7 @@ const AddService = () => {
           <div className="w-full">
             <div className="max-w-5xl mx-auto px-6 sm:px-6 lg:px-8 mb-12">
               <div className="bg-white w-full shadow rounded p-8 sm:p-12 ">
-                <form action="" method="post">
+                <form onSubmit={handleServiceAdd}>
                   <div className="md:flex items-center mt-12">
                     <div className="w-full md:w-1/2 flex flex-col">
                       <label className="font-semibold leading-none">Service Title</label>
@@ -76,7 +109,9 @@ const AddService = () => {
                     </div>
                   </div>
                   <div className="flex items-center  w-full">
-                    <button className="mt-9 btn btn-primary">Add Service</button>
+                    <button type="submit" className="mt-9 btn btn-primary">
+                      Add Service
+                    </button>
                   </div>
                 </form>
               </div>

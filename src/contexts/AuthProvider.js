@@ -28,6 +28,7 @@ const AuthProvider = ({ children }) => {
 
   // update user
   const updateUser = (name, image) => {
+    setLoading(true);
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: image,
@@ -36,16 +37,19 @@ const AuthProvider = ({ children }) => {
 
   // login email password
   const signInEmailPassword = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   // Google Login
   const signInWithGoogle = () => {
+    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
   //log out
   const logOut = () => {
+    setLoading(true);
     return signOut(auth);
   };
 
