@@ -22,6 +22,7 @@ const SignUp = () => {
         console.log(user);
 
         toast.success("SignUp Successfully!");
+        form.reset();
       })
       .catch((error) => {
         // const errorCode = error.code;

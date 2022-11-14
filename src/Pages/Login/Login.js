@@ -5,7 +5,27 @@ import { AuthContext } from "../../contexts/AuthProvider";
 // import login_img from "../../assets/images/login.png";
 
 const Login = () => {
-  const { signInWithGoogle } = useContext(AuthContext);
+  const { signInWithGoogle, signInEmailPassword } = useContext(AuthContext);
+
+  const handleSignIn = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    signInEmailPassword(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        toast.success("Login Successfully!");
+        form.reset();
+      })
+      .catch((error) => {
+        // const errorCode = error.code;
+        const errorMessage = error.message;
+        toast.error(errorMessage);
+      });
+  };
 
   const handleGoogleLogin = () => {
     signInWithGoogle()
@@ -37,7 +57,7 @@ const Login = () => {
             <h1 className="text-5xl font-bold mt-[-0.5rem]">Login now!</h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body">
+            <form onSubmit={handleSignIn} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
