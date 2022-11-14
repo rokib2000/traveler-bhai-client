@@ -89,7 +89,7 @@ const Header = () => {
             )}
           </ul>
 
-          <label className="btn btn-ghost btn-circle avatar">
+          <label className="btn btn-ghost btn-circle avatar ">
             <div className="w-10 rounded-full">
               {user?.photoURL ? (
                 <img src={user?.photoURL} alt="" />

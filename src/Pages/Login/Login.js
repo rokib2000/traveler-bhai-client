@@ -5,7 +5,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 // import login_img from "../../assets/images/login.png";
 
 const Login = () => {
-  const { user, signInWithGoogle } = useContext(AuthContext);
+  const { signInWithGoogle } = useContext(AuthContext);
 
   const handleGoogleLogin = () => {
     signInWithGoogle()
@@ -60,7 +60,9 @@ const Login = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Log in</button>
+                <button type="submit" className="btn btn-primary">
+                  Log in
+                </button>
               </div>
             </form>
             <p className="text-center ">

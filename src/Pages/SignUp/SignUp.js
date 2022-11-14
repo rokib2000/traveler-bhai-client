@@ -1,7 +1,45 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const SignUp = () => {
+  const { createUser, updateUser } = useContext(AuthContext);
+
+  const handleSignUp = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const image = form.image.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    createUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        // console.log(user);
+        updateUserProfile(name, image);
+        console.log(user);
+
+        toast.success("SignUp Successfully!");
+      })
+      .catch((error) => {
+        // const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(error);
+
+        toast.error(errorMessage);
+      });
+  };
+
+  const updateUserProfile = (name, image) => {
+    updateUser(name, image)
+      .then(() => {
+        // console.log("Display name update");
+      })
+      .catch((error) => console.error(error));
+  };
+
   return (
     <div
       className="min-h-screen"
@@ -19,7 +57,7 @@ const SignUp = () => {
             <h1 className="text-5xl font-bold mt-[-0.5rem]">Sign Up now!</h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body">
+            <form onSubmit={handleSignUp} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
@@ -51,7 +89,9 @@ const SignUp = () => {
                 />
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Sign up</button>
+                <button type="submit" className="btn btn-primary">
+                  Sign up
+                </button>
               </div>
             </form>
             <p className="text-center mb-6">
