@@ -6,7 +6,7 @@ const ServicesSection = () => {
       <div className="hero">
         <div className="hero-content text-center">
           <div className="max-w-md">
-            <h1 className="text-4xl font-bold">ServicesSection</h1>
+            <h1 className="text-4xl font-bold">Services</h1>
             <p className="py-6">Provident cupiditate voluptatem et in.</p>
           </div>
         </div>

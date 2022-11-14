@@ -30,25 +30,25 @@ const ServiceDetails = () => {
 
       <div className="md:w-1/2 mx-auto">
         <h2 className="text-4xl mb-8">Reviews</h2>
-        <div class="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg">
-          <div class="relative flex gap-4">
+        <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg">
+          <div className="relative flex gap-4">
             <img
               src="https://icons.iconarchive.com/icons/diversity-avatars/avatars/256/charlie-chaplin-icon.png"
-              class="relative rounded-full   bg-white border h-14 w-14"
+              className="relative rounded-full   bg-white border h-14 w-14"
               alt=""
               loading="lazy"
             />
-            <div class="flex flex-col w-full">
-              <div class="flex flex-row justify-between">
-                <p class="relative text-lg whitespace-nowrap truncate overflow-hidden">COMMENTOR</p>
-                <a class="text-gray-500 text-xl" href="#">
-                  <i class="fa-solid fa-trash"></i>
+            <div className="flex flex-col w-full">
+              <div className="flex flex-row justify-between">
+                <p className="relative text-lg whitespace-nowrap truncate overflow-hidden">COMMENTOR</p>
+                <a className="text-gray-500 text-xl" href="#">
+                  <i className="fa-solid fa-trash"></i>
                 </a>
               </div>
-              <p class="text-gray-400 text-sm">20 April 2022, at 14:88 PM</p>
+              <p className="text-gray-400 text-sm">20 April 2022, at 14:88 PM</p>
             </div>
           </div>
-          <p class="-mt-4 text-gray-500">
+          <p className="-mt-4 text-gray-500">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />
             Maxime quisquam vero adipisci beatae voluptas dolor ame.
           </p>
@@ -56,20 +56,20 @@ const ServiceDetails = () => {
       </div>
 
       <div className="md:w-1/2 mx-auto">
-        <form class="w-full  bg-white rounded-lg px-4 pt-2">
-          <div class="flex flex-wrap -mx-3 mb-6">
-            <h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new review</h2>
-            <div class="w-full md:w-full px-3 mb-2 mt-2">
+        <form className="w-full  bg-white rounded-lg px-4 pt-2">
+          <div className="flex flex-wrap -mx-3 mb-6">
+            <h2 className="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new review</h2>
+            <div className="w-full md:w-full px-3 mb-2 mt-2">
               <textarea
-                class="textarea textarea-bordered w-full"
+                className="textarea textarea-bordered w-full"
                 name="body"
                 placeholder="Type Your Comment"
                 required
               ></textarea>
             </div>
-            <div class="w-full md:w-full flex items-start md:w-full px-3">
-              <div class="-mr-1">
-                <input type="submit" class="btn btn-primary" value="Post Review" />
+            <div className="w-full md:w-full flex items-start md:w-full px-3">
+              <div className="-mr-1">
+                <input type="submit" className="btn btn-primary" value="Post Review" />
               </div>
             </div>
           </div>

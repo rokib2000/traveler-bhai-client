@@ -1,10 +1,22 @@
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo-c.png";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        // Sign-out successful.
+        toast.success("Logout Successfully!");
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
 
   const menuItem = (
     <>
@@ -62,9 +74,11 @@ const Header = () => {
         </div>
         <div className="navbar-end">
           <ul className="menu menu-horizontal p-0 font-semibold">
-            {user?.name ? (
+            {user?.uid ? (
               <li>
-                <button className="btn  btn-ghost ">Log Out</button>
+                <button onClick={handleLogout} className="btn  btn-ghost " type="submit">
+                  Log Out
+                </button>
               </li>
             ) : (
               <li>
@@ -77,8 +91,8 @@ const Header = () => {
 
           <label className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              {user?.img ? (
-                <img src="https://placeimg.com/80/80/people" alt="" />
+              {user?.photoURL ? (
+                <img src={user?.photoURL} alt="" />
               ) : (
                 <img src="https://i.postimg.cc/T3LxnWxY/profile.png" alt="" />
               )}

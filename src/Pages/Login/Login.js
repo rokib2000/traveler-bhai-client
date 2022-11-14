@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 // import login_img from "../../assets/images/login.png";
 
 const Login = () => {
+  const { user, signInWithGoogle } = useContext(AuthContext);
+
+  const handleGoogleLogin = () => {
+    signInWithGoogle()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Login Successfully!");
+      })
+      .catch((error) => {
+        console.error(error);
+        // toast.error(error.massage);
+      });
+  };
+
   return (
     <div
       className="min-h-screen"
@@ -55,9 +72,9 @@ const Login = () => {
             <div className="divider">OR</div>
             <div className="card-body">
               <div className="form-control ">
-                <button type="button" class="btn btn-primary">
+                <button onClick={handleGoogleLogin} type="submitF" className="btn btn-primary">
                   <svg
-                    class="mr-2 -ml-1 w-4 h-4"
+                    className="mr-2 -ml-1 w-4 h-4"
                     aria-hidden="true"
                     focusable="false"
                     data-prefix="fab"

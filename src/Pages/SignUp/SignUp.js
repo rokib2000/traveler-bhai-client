@@ -63,9 +63,9 @@ const SignUp = () => {
             {/* <div className="divider">OR</div> */}
             {/* <div className="card-body">
               <div className="form-control ">
-                <button type="button" class="btn btn-primary">
+                <button type="button" className="btn btn-primary">
                   <svg
-                    class="mr-2 -ml-1 w-4 h-4"
+                    className="mr-2 -ml-1 w-4 h-4"
                     aria-hidden="true"
                     focusable="false"
                     data-prefix="fab"
