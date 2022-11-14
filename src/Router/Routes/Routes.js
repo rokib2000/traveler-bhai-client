@@ -32,8 +32,9 @@ const router = createBrowserRouter([
         element: <MyReview></MyReview>,
       },
       {
-        path: "/service",
+        path: "/services",
         element: <Service></Service>,
+        loader: () => fetch("http://localhost:5000/services"),
       },
       {
         path: "/service/id",

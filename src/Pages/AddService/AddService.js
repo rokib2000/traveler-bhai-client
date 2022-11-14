@@ -1,6 +1,5 @@
 import React from "react";
 import toast from "react-hot-toast";
-import { json } from "react-router-dom";
 
 const AddService = () => {
   const handleServiceAdd = (event) => {
@@ -12,8 +11,9 @@ const AddService = () => {
     const location = form.location.value;
     const image = form.image.value;
     const description = form.description.value;
+    const date = new Date();
 
-    const service = { price, title, location, image, description };
+    const service = { date, title, price, location, image, description };
 
     fetch("http://localhost:5000/services", {
       method: "POST",
