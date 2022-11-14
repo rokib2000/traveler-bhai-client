@@ -1,5 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import "react-photo-view/dist/react-photo-view.css";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const ServiceDetails = () => {
   const service = useLoaderData();
@@ -10,7 +12,13 @@ const ServiceDetails = () => {
   return (
     <div className="container mx-auto">
       <div className="md:w-1/2 rounded overflow-hidden shadow-lg mx-auto my-12">
-        <img className="w-full" src={image} alt="Sunset in the mountains" />
+        <PhotoProvider>
+          <PhotoView src={image}>
+            <img className="w-full" src={image} alt={title} />
+          </PhotoView>
+        </PhotoProvider>
+
+        {/* <img className="w-full" src={image} alt="Sunset in the mountains" /> */}
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{title}</div>
           <div className="flex justify-between my-4">
