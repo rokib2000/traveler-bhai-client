@@ -1,13 +1,12 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import "react-photo-view/dist/react-photo-view.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
+import AddReview from "../../Shared/AddReview/AddReview";
 
 const ServiceDetails = () => {
   const service = useLoaderData();
-  // console.log(service);
-
-  const { description, image, location, price, title } = service;
+  const { _id, description, image, location, price, title } = service;
 
   return (
     <div className="container mx-auto">
@@ -50,10 +49,10 @@ const ServiceDetails = () => {
             />
             <div className="flex flex-col w-full">
               <div className="flex flex-row justify-between">
-                <p className="relative text-lg whitespace-nowrap truncate overflow-hidden">COMMENTOR</p>
-                <a className="text-gray-500 text-xl" href="#">
+                <p className="relative text-lg whitespace-nowrap truncate overflow-hidden">Rokib</p>
+                <Link className="text-gray-500 text-xl">
                   <i className="fa-solid fa-trash"></i>
-                </a>
+                </Link>
               </div>
               <p className="text-gray-400 text-sm">20 April 2022, at 14:88 PM</p>
             </div>
@@ -65,26 +64,7 @@ const ServiceDetails = () => {
         </div>
       </div>
 
-      <div className="md:w-1/2 mx-auto">
-        <form className="w-full  bg-white rounded-lg px-4 pt-2">
-          <div className="flex flex-wrap -mx-3 mb-6">
-            <h2 className="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new review</h2>
-            <div className="w-full md:w-full px-3 mb-2 mt-2">
-              <textarea
-                className="textarea textarea-bordered w-full"
-                name="body"
-                placeholder="Type Your Comment"
-                required
-              ></textarea>
-            </div>
-            <div className="w-full md:w-full flex items-start md:w-full px-3">
-              <div className="-mr-1">
-                <input type="submit" className="btn btn-primary" value="Post Review" />
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
+      <AddReview key={_id} service={service}></AddReview>
     </div>
   );
 };
