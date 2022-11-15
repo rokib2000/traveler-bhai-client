@@ -55,14 +55,14 @@ const AddReview = ({ handleReviewSubmit }) => {
             ></textarea>
           </div>
           <div className="w-full md:w-full flex items-start  px-3 mb-8">
-            <div className="-mr-1">
+            <div className="-mr-1 w-full">
               {user?.uid ? (
                 <button type="submit" className="btn btn-primary">
                   Post Review
                 </button>
               ) : (
                 <div className="alert  alert-error shadow-lg ">
-                  <div>
+                  <div className="w-full">
                     <span>Please login to write a review</span>
                   </div>
                   <div className="flex-none">
