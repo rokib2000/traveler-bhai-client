@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const MyReviewCard = (props) => {
-  const { review, serviceID } = props.reviewDetails;
+  const { handleDelete } = props;
+  const { _id, review, serviceID } = props.reviewDetails;
 
   const [service, setService] = useState([]);
 
@@ -22,7 +23,7 @@ const MyReviewCard = (props) => {
     <tr>
       <th>
         <label>
-          <button className="btn btn-circle btn-outline btn-error btn-sm">
+          <button onClick={() => handleDelete(_id)} className="btn btn-circle btn-outline btn-error btn-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"

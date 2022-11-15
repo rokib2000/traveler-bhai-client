@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../contexts/AuthProvider";
 import ChangePageTitle from "../Shared/ChangePageTitle/ChangePageTitle";
 import MyReviewCard from "./MyReviewCard";
@@ -17,6 +18,25 @@ const MyReview = () => {
       })
       .catch((err) => console.error(err));
   }, []);
+
+  const handleDelete = (id) => {
+    const proceed = window.confirm("Are you sure? you want to delete");
+    if (proceed) {
+      fetch(`http://localhost:5000/reviews/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.deletedCount > 0) {
+            toast.success("delete successfully");
+            const remaining = reviews.filter((odr) => odr._id !== id);
+            setReviews(remaining);
+          }
+        });
+    }
+  };
+
   return (
     <div>
       <ChangePageTitle pageTitle="My Review - Traveler Bhai" />
@@ -42,7 +62,11 @@ const MyReview = () => {
             </thead>
             <tbody>
               {reviews.map((reviewDetails) => (
-                <MyReviewCard key={reviewDetails._id} reviewDetails={reviewDetails}></MyReviewCard>
+                <MyReviewCard
+                  key={reviewDetails._id}
+                  handleDelete={handleDelete}
+                  reviewDetails={reviewDetails}
+                ></MyReviewCard>
               ))}
             </tbody>
           </table>
