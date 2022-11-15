@@ -13,11 +13,11 @@ const MyReview = () => {
     fetch(`http://localhost:5000/reviews?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setReviews(data);
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [reviews]);
 
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure? you want to delete");
@@ -48,31 +48,35 @@ const MyReview = () => {
           </div>
         </div>
       </div>
-      <div className="container mx-auto">
-        <div className="overflow-x-auto w-full my-12">
-          <table className="table w-full">
-            <thead>
-              <tr>
-                <th>Delete</th>
-                <th>Service Name</th>
-                <th>Review</th>
-                <th>Service Details</th>
-                <th>Edit</th>
-              </tr>
-            </thead>
-            <tbody>
-              {reviews.length === 0 && <tr className="text-3xl text-center col-span-full">No data Found</tr>}
-              {reviews.map((reviewDetails) => (
-                <MyReviewCard
-                  key={reviewDetails._id}
-                  handleDelete={handleDelete}
-                  reviewDetails={reviewDetails}
-                ></MyReviewCard>
-              ))}
-            </tbody>
-          </table>
+      {reviews.length === 0 ? (
+        <h2 className="text-3xl text-center h-screen">No data Found</h2>
+      ) : (
+        <div className="container mx-auto">
+          <div className="overflow-x-auto w-full my-12">
+            <table className="table w-full">
+              <thead>
+                <tr>
+                  <th>Delete</th>
+                  <th>Service Name</th>
+                  <th>Review</th>
+                  <th>Service Details</th>
+                  <th>Edit</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* {reviews.length === 0 && <tr className="text-3xl text-center col-span-full">No data Found</tr>} */}
+                {reviews.map((reviewDetails) => (
+                  <MyReviewCard
+                    key={reviewDetails._id}
+                    handleDelete={handleDelete}
+                    reviewDetails={reviewDetails}
+                  ></MyReviewCard>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

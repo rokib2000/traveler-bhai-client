@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import MyReviewEdit from "./MyReviewEdit";
 
@@ -8,6 +9,7 @@ const MyReviewCard = (props) => {
   const { _id, review, serviceID } = reviewDetail;
 
   const [service, setService] = useState([]);
+  const [updateData, setUpdateData] = useState();
 
   useEffect(() => {
     fetch(`http://localhost:5000/services/${serviceID}`)
@@ -19,7 +21,33 @@ const MyReviewCard = (props) => {
       .catch((err) => console.error(err));
   }, []);
 
-  //   console.log(service);
+  //   Update Review
+
+  const handleUpdate = (event) => {
+    event.preventDefault();
+
+    const status = updateData;
+
+    fetch(`http://localhost:5000/reviews/${_id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ status: status }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          toast.success("Review Update Successfully");
+        }
+      });
+  };
+
+  const getUpdateData = (event) => {
+    // console.log(event.target.value);
+    setUpdateData(event.target.value);
+  };
 
   return (
     <tr>
@@ -57,7 +85,12 @@ const MyReviewCard = (props) => {
         </Link>
       </td>
       <th>
-        <MyReviewEdit key={service._id} reviewDetail={reviewDetail}></MyReviewEdit>
+        <MyReviewEdit
+          key={service._id}
+          handleUpdate={handleUpdate}
+          getUpdateData={getUpdateData}
+          reviewDetail={reviewDetail}
+        ></MyReviewEdit>
       </th>
     </tr>
   );

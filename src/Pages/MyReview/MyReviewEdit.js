@@ -1,40 +1,9 @@
-import React, { useState } from "react";
-import toast from "react-hot-toast";
+import React from "react";
 
 const MyReviewEdit = (props) => {
-  const [updateData, setUpdateData] = useState();
+  //   const [updateData, setUpdateData] = useState();
+  const { getUpdateData, handleUpdate } = props;
   const { _id, review } = props.reviewDetail;
-
-  const handleUpdate = (event) => {
-    event.preventDefault();
-
-    // const form = event.target;
-    // const status = form.body.value;
-
-    const status = updateData;
-
-    console.log(status);
-
-    fetch(`http://localhost:5000/reviews/${_id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ status: status }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.modifiedCount > 0) {
-          toast.success("Review Update Successfully");
-        }
-      });
-  };
-
-  const getUpdateData = (event) => {
-    // console.log(event.target.value);
-    setUpdateData(event.target.value);
-  };
 
   return (
     <div>
