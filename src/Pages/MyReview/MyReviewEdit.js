@@ -12,14 +12,12 @@ const MyReviewEdit = (props) => {
         Edit
       </label>
 
-      {/* Put this part before </body> tag */}
       <input type="checkbox" id={`my-modal${_id}`} className="modal-toggle" />
       <div className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg">Update Review</h3>
           <form onSubmit={handleUpdate} className="w-full  bg-white rounded-lg px-4 pt-2">
             <div className="flex flex-wrap -mx-3 mb-6">
-              {/* <h2 className="px-4 pt-3 pb-2 text-gray-800 text-xl font-medium">Add a new review</h2> */}
               <div className="w-full md:w-full px-3 mb-2 mt-2">
                 <textarea
                   onChange={getUpdateData}

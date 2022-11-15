@@ -15,14 +15,12 @@ const MyReviewCard = (props) => {
     fetch(`http://localhost:5000/services/${serviceID}`)
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
         setService(data);
       })
       .catch((err) => console.error(err));
   }, []);
 
   //   Update Review
-
   const handleUpdate = (event) => {
     event.preventDefault();
 
@@ -45,7 +43,6 @@ const MyReviewCard = (props) => {
   };
 
   const getUpdateData = (event) => {
-    // console.log(event.target.value);
     setUpdateData(event.target.value);
   };
 

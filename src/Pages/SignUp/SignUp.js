@@ -22,9 +22,7 @@ const SignUp = () => {
     createUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        // console.log(user);
         updateUserProfile(name, image);
-        // console.log(user);
 
         const currentUser = {
           email: user.email,
@@ -51,7 +49,6 @@ const SignUp = () => {
         }
       })
       .catch((error) => {
-        // const errorCode = error.code;
         const errorMessage = error.message;
         console.error(error);
 
@@ -76,8 +73,6 @@ const SignUp = () => {
         style={{
           backgroundImage: `url("https://i.postimg.cc/B6rNsh9j/logo-maiya.png") `,
           backgroundRepeat: "no-repeat",
-          // backgroundSize: "40%",
-          // backgroundAttachment: "fixed",
           backgroundPosition: "center",
         }}
       >

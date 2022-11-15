@@ -98,8 +98,6 @@ const Login = () => {
         style={{
           backgroundImage: `url("https://i.postimg.cc/B6rNsh9j/logo-maiya.png") `,
           backgroundRepeat: "no-repeat",
-          // backgroundSize: "40%",
-          // backgroundAttachment: "fixed",
           backgroundPosition: "center",
         }}
       >

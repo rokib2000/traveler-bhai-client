@@ -23,7 +23,6 @@ const MyReview = () => {
         return res.json();
       })
       .then((data) => {
-        // console.log(data);
         setReviews(data);
       })
       .catch((err) => console.error(err));
@@ -74,7 +73,6 @@ const MyReview = () => {
                 </tr>
               </thead>
               <tbody>
-                {/* {reviews.length === 0 && <tr className="text-3xl text-center col-span-full">No data Found</tr>} */}
                 {reviews?.map((reviewDetails) => (
                   <MyReviewCard
                     key={reviewDetails._id}
