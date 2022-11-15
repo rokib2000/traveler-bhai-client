@@ -12,7 +12,7 @@ const MyReviewCard = (props) => {
   const [updateData, setUpdateData] = useState();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/services/${serviceID}`)
+    fetch(`https://traveler-bhai-server.vercel.app/services/${serviceID}`)
       .then((res) => res.json())
       .then((data) => {
         setService(data);
@@ -26,7 +26,7 @@ const MyReviewCard = (props) => {
 
     const status = updateData;
 
-    fetch(`http://localhost:5000/reviews/${_id}`, {
+    fetch(`https://traveler-bhai-server.vercel.app/reviews/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

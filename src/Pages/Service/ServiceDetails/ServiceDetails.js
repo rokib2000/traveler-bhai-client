@@ -17,7 +17,7 @@ const ServiceDetails = () => {
   const [addReview, setAddReview] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?id=${_id}`)
+    fetch(`https://traveler-bhai-server.vercel.app/reviews?id=${_id}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -42,7 +42,7 @@ const ServiceDetails = () => {
       date: date,
     };
 
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://traveler-bhai-server.vercel.app/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",

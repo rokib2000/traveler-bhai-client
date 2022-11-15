@@ -16,7 +16,7 @@ const AddService = () => {
 
     const service = { date, title, price, location, image, description };
 
-    fetch("http://localhost:5000/services", {
+    fetch("https://traveler-bhai-server.vercel.app/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",

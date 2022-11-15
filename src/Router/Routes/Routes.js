@@ -48,7 +48,7 @@ const router = createBrowserRouter([
             <Service></Service>
           </LoadingSpinner>
         ),
-        loader: () => fetch("http://localhost:5000/services"),
+        loader: () => fetch("https://traveler-bhai-server.vercel.app/services"),
       },
       {
         path: "/service/:id",
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
             <ServiceDetails></ServiceDetails>
           </LoadingSpinner>
         ),
-        loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`),
+        loader: ({ params }) => fetch(`https://traveler-bhai-server.vercel.app/services/${params.id}`),
       },
       {
         path: "/addService",

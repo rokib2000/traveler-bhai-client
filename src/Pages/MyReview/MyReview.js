@@ -10,7 +10,7 @@ const MyReview = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviewsEmail?email=${user?.email}`, {
+    fetch(`https://traveler-bhai-server.vercel.app/reviewsEmail?email=${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("travelerToken")}`,
       },
@@ -31,7 +31,7 @@ const MyReview = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure? you want to delete");
     if (proceed) {
-      fetch(`http://localhost:5000/reviews/${id}`, {
+      fetch(`https://traveler-bhai-server.vercel.app/reviews/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

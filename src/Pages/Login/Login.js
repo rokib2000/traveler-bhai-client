@@ -28,7 +28,7 @@ const Login = () => {
 
         // get jwt
 
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://traveler-bhai-server.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -66,7 +66,7 @@ const Login = () => {
 
         // get jwt
 
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://traveler-bhai-server.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
