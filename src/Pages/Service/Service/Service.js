@@ -1,12 +1,14 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import ServiceCard from "../../Shared/ServiceCard/ServiceCard";
+import ChangePageTitle from "../../Shared/ChangePageTitle/ChangePageTitle";
 
 const Service = () => {
   const services = useLoaderData();
 
   return (
     <div>
+      <ChangePageTitle pageTitle="Services - Traveler Bhai" />
       <div className="hero bg-base-200 my-6">
         <div className="hero-content text-center">
           <div className="max-w-md">
