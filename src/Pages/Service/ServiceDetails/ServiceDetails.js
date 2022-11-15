@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import "react-photo-view/dist/react-photo-view.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import AddReview from "../../Shared/AddReview/AddReview";
 import ReviewShowCard from "../../Shared/ReviewShowCard/ReviewShowCard";
+import toast from "react-hot-toast";
+import { AuthContext } from "../../../contexts/AuthProvider";
 
 const ServiceDetails = () => {
+  const { user } = useContext(AuthContext);
   const service = useLoaderData();
   const { _id, description, image, location, price, title } = service;
 
   const [reviews, setReviews] = useState([]);
+
+  const [addReview, setAddReview] = useState();
 
   useEffect(() => {
     fetch(`http://localhost:5000/reviews?id=${_id}`)
@@ -19,7 +24,41 @@ const ServiceDetails = () => {
         setReviews(data);
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [addReview]);
+
+  const handleReviewSubmit = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const body = form.body.value;
+    const date = new Date();
+
+    const review = {
+      review: body,
+      userName: user?.displayName,
+      userEmail: user?.email,
+      userPhoto: user?.photoURL,
+      serviceID: _id,
+      date: date,
+    };
+
+    fetch("http://localhost:5000/reviews", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(review),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          setAddReview(data.insertedId);
+          toast.success("Review Added Successfully");
+          form.reset();
+        }
+      });
+  };
 
   return (
     <div className="container mx-auto">
@@ -57,7 +96,7 @@ const ServiceDetails = () => {
         ))}
       </div>
 
-      <AddReview key={_id} service={service}></AddReview>
+      <AddReview key={_id} service={service} handleReviewSubmit={handleReviewSubmit}></AddReview>
     </div>
   );
 };

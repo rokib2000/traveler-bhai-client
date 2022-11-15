@@ -1,47 +1,46 @@
 import React, { useContext } from "react";
-import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
-const AddReview = ({ service }) => {
+const AddReview = ({ handleReviewSubmit }) => {
   const { user } = useContext(AuthContext);
   //   console.log(user);
   //   const { displayName, email, photoURL } = user;
 
-  const { _id } = service;
+  //   const { _id } = service;
 
-  const handleReviewSubmit = (event) => {
-    event.preventDefault();
+  //   const handleReviewSubmit = (event) => {
+  //     event.preventDefault();
 
-    const form = event.target;
-    const body = form.body.value;
-    const date = new Date();
+  //     const form = event.target;
+  //     const body = form.body.value;
+  //     const date = new Date();
 
-    const review = {
-      review: body,
-      userName: user?.displayName,
-      userEmail: user?.email,
-      userPhoto: user?.photoURL,
-      serviceID: _id,
-      date: date,
-    };
+  //     const review = {
+  //       review: body,
+  //       userName: user?.displayName,
+  //       userEmail: user?.email,
+  //       userPhoto: user?.photoURL,
+  //       serviceID: _id,
+  //       date: date,
+  //     };
 
-    fetch("http://localhost:5000/reviews", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(review),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.acknowledged) {
-          toast.success("Review Added Successfully");
-          form.reset();
-        }
-      });
-  };
+  //     fetch("http://localhost:5000/reviews", {
+  //       method: "POST",
+  //       headers: {
+  //         "content-type": "application/json",
+  //       },
+  //       body: JSON.stringify(review),
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         console.log(data);
+  //         if (data.acknowledged) {
+  //           toast.success("Review Added Successfully");
+  //           form.reset();
+  //         }
+  //       });
+  //   };
   return (
     <div className="md:w-1/2 mx-auto">
       <form onSubmit={handleReviewSubmit} className="w-full  bg-white rounded-lg px-4 pt-2">
