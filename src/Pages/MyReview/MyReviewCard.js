@@ -48,7 +48,7 @@ const MyReviewCard = (props) => {
           </div>
         </div>
       </td>
-      <td>{review}</td>
+      <td>{review.slice(0, 100)}</td>
       <td>
         <Link to={`/service/${service?._id}`} className="btn  btn-success btn-sm">
           Details

@@ -61,6 +61,7 @@ const MyReview = () => {
               </tr>
             </thead>
             <tbody>
+              {reviews.length === 0 && <tr className="text-3xl text-center col-span-full">No data Found</tr>}
               {reviews.map((reviewDetails) => (
                 <MyReviewCard
                   key={reviewDetails._id}
