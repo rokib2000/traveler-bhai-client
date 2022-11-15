@@ -23,9 +23,11 @@ const ReviewShowCard = (props) => {
             </Link>
           </div>
           <p className="text-gray-400 text-sm">{date}</p>
+          <hr />
+          <p className="mt-3 text-gray-700 ">{review}</p>
         </div>
       </div>
-      <p className="-mt-4 text-gray-500">{review}</p>
+      {/* <p className="-mt-4 text-gray-500">{review}</p> */}
     </div>
   );
 };
