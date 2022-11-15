@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import MyReviewEdit from "./MyReviewEdit";
 
 const MyReviewCard = (props) => {
   const { handleDelete } = props;
-  const { _id, review, serviceID } = props.reviewDetails;
+  const reviewDetail = props.reviewDetails;
+  const { _id, review, serviceID } = reviewDetail;
 
   const [service, setService] = useState([]);
 
@@ -48,14 +50,14 @@ const MyReviewCard = (props) => {
           </div>
         </div>
       </td>
-      <td>{review.slice(0, 100)}</td>
+      <td>{review?.slice(0, 100)}</td>
       <td>
         <Link to={`/service/${service?._id}`} className="btn  btn-success btn-sm">
           Details
         </Link>
       </td>
       <th>
-        <button className="btn btn-outline btn-accent btn-sm">Edit</button>
+        <MyReviewEdit key={service._id} reviewDetail={reviewDetail}></MyReviewEdit>
       </th>
     </tr>
   );
