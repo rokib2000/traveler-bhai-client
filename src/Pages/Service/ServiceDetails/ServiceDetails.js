@@ -14,7 +14,7 @@ const ServiceDetails = () => {
 
   const [reviews, setReviews] = useState([]);
 
-  const [addReview, setAddReview] = useState();
+  const [addReview, setAddReview] = useState({});
 
   useEffect(() => {
     fetch(`http://localhost:5000/reviews?id=${_id}`)
@@ -58,6 +58,7 @@ const ServiceDetails = () => {
           form.reset();
         }
       });
+    console.log(reviews);
   };
 
   return (
@@ -84,14 +85,14 @@ const ServiceDetails = () => {
         </div>
         <div className="px-6 pt-4 pb-2 flex justify-between items-center">
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            {reviews.length} Review
+            {reviews?.length} Review
           </span>
         </div>
       </div>
 
       <div className="md:w-1/2 mx-auto">
         <h2 className="text-4xl mb-8">Reviews</h2>
-        {reviews.map((review) => (
+        {reviews?.map((review) => (
           <ReviewShowCard key={review._id} review={review}></ReviewShowCard>
         ))}
       </div>

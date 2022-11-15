@@ -5,19 +5,29 @@ import ChangePageTitle from "../Shared/ChangePageTitle/ChangePageTitle";
 import MyReviewCard from "./MyReviewCard";
 
 const MyReview = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?email=${user?.email}`)
-      .then((res) => res.json())
+    fetch(`http://localhost:5000/reviewsEmail?email=${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("travelerToken")}`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          localStorage.removeItem("travelerToken");
+          return logOut();
+        }
+        return res.json();
+      })
       .then((data) => {
         // console.log(data);
         setReviews(data);
       })
       .catch((err) => console.error(err));
-  }, [reviews]);
+  }, [reviews, user?.email, logOut]);
 
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure? you want to delete");
@@ -48,7 +58,7 @@ const MyReview = () => {
           </div>
         </div>
       </div>
-      {reviews.length === 0 ? (
+      {reviews?.length === 0 ? (
         <h2 className="text-3xl text-center h-screen">No data Found</h2>
       ) : (
         <div className="container mx-auto">
@@ -65,7 +75,7 @@ const MyReview = () => {
               </thead>
               <tbody>
                 {/* {reviews.length === 0 && <tr className="text-3xl text-center col-span-full">No data Found</tr>} */}
-                {reviews.map((reviewDetails) => (
+                {reviews?.map((reviewDetails) => (
                   <MyReviewCard
                     key={reviewDetails._id}
                     handleDelete={handleDelete}
