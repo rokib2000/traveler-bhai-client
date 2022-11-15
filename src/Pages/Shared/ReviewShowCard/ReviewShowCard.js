@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 const ReviewShowCard = (props) => {
   //   console.log(review);
 
-  const { review, userName, userPhoto } = props.review;
+  const { review, userName, userPhoto, date } = props.review;
+
   return (
     <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg">
       <div className="relative flex gap-4">
@@ -21,7 +22,7 @@ const ReviewShowCard = (props) => {
               <i className="fa-solid fa-trash"></i>
             </Link>
           </div>
-          <p className="text-gray-400 text-sm">20 April 2022, at 14:88 PM</p>
+          <p className="text-gray-400 text-sm">{date}</p>
         </div>
       </div>
       <p className="-mt-4 text-gray-500">{review}</p>

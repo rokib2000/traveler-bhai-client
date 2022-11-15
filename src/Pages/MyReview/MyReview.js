@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../contexts/AuthProvider";
 import ChangePageTitle from "../Shared/ChangePageTitle/ChangePageTitle";
+import MyReviewCard from "./MyReviewCard";
 
 const MyReview = () => {
+  const { user } = useContext(AuthContext);
+
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setReviews(data);
+      })
+      .catch((err) => console.error(err));
+  }, []);
   return (
     <div>
       <ChangePageTitle pageTitle="My Review - Traveler Bhai" />
@@ -26,42 +41,9 @@ const MyReview = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th>
-                  <label>
-                    <button className="btn btn-circle btn-outline btn-error btn-sm">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                    </button>
-                  </label>
-                </th>
-                <td>
-                  <div className="flex items-center space-x-3">
-                    <div className="avatar">
-                      <div className="mask mask-squircle w-12 h-12">
-                        <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="font-bold">Hart Hagerty</div>
-                    </div>
-                  </div>
-                </td>
-                <td>Zemlak, Daniel and Leannon</td>
-                <td>
-                  <button className="btn  btn-success btn-sm">Details</button>
-                </td>
-                <th>
-                  <button className="btn btn-outline btn-accent btn-sm">Edit</button>
-                </th>
-              </tr>
+              {reviews.map((reviewDetails) => (
+                <MyReviewCard key={reviewDetails._id} reviewDetails={reviewDetails}></MyReviewCard>
+              ))}
             </tbody>
           </table>
         </div>
